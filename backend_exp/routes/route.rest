@@ -1,48 +1,67 @@
 GET http://localhost:3000/users
 
+###
+POST http://localhost:3000/users/
+Content-Type: application/json
 
+{
+    "name": "user101",
+    "password": "123456"
+}
 
 ###
 POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "username": "user101",
+    "name": "user101",
     "password": "123456"
 }
 
 ###
-
-GET http://localhost:3000/subscribers/618a9836f3f7ac4f6b18b6a0
+// view projects
+GET  http://localhost:3000/projects/
 
 ###
+// view categories
+GET  http://localhost:3000/projects/category/
 
-POST http://localhost:3000/subscribers
+###
+// view expenses
+GET  http://localhost:3000/projects/expense/
+
+###
+// view single project and expenses
+GET  http://localhost:3000/projects/2
+
+
+
+###
+// update expense 
+PUT http://localhost:3000/update/1
 Content-Type: application/json
 
 {
-    "name": "Amazing Person",
-    "subscribedToChannel": "Web Dev Simplified"
-}
-
-
-
-###
-
-POST http://localhost:3000/expense/1
-Content-Type: application/json
-{
-    "name": "Amazing Person",
-    "subscribedToChannel": "Web Dev Simplified"
+    "id": 1,
+    "project_id": 2,
+    "category_id": 2,
+    "name": "test",
+    "description": "testing",
+    "amount": 2,
+    "created_at": "2021-11-04T16:00:00.000Z",
+    "created_by": "Helen",
+    "updated_at": "2021-11-04T16:00:00.000Z",
+    "updated_by": "Helen"
 }
 
 ###
-DELETE http://localhost:3000/subscribers/618a9836f3f7ac4f6b18b6a0
+//expense delete
+DELETE http://localhost:3000/projects/delete/618cdaae31b95c03eaf30dd7
 
 ###
 
 //Creating expense
-POST http://localhost:3000/projects
+POST http://localhost:3000/projects/create
 Content-Type: : application/json
 
 {
@@ -52,8 +71,8 @@ Content-Type: : application/json
     "name": "test",
     "description": "testing",
     "amount": 2,
-    "created_at": ,
+    "created_at": "2021-11-04T16:00:00.000Z",
     "created_by": "Helen",
-    "updated_at": ,
+    "updated_at": "2021-11-04T16:00:00.000Z",
     "updated_by": "Helen"
 }

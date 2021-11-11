@@ -6,44 +6,40 @@ const expenseSchema = new mongoose.Schema({
         required: false
     },
     project_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Project'
+        type: Number,
+        required: false,
     },
     category_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Category'
+        type: Number,
+        required: false,
     },
     name: {
         type: String,
-        required: true
+        required: false
     },
     description: {
         type: String,
-        required: true
+        required: false
     },
     amount: {
         type: Number,
-        required: true
+        required: false
     },
     created_at: {
         type: Date,
-        required: true
+        required: false
     },
     created_by: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
+        type: String,
+        required: false,
     },
     updated_at: {
         type: Date,
-        required: true
+        required: false
     },
     updated_by: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
+        type: String,
+        required: false,
     }
 })
 

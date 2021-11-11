@@ -51,8 +51,12 @@ router.get('/user', async (req, res) => {
 
 //Getting one project and its expenses
 router.get('/:id', async (req, res) => {
+    let project
     try {
-        const expense = await Expense.find({ project_id:req.params.project_id}).exec()
+        project = await Expense.find({ project_id: req.params.id}).exec()
+        if (project == null) {
+            return res.status(404).json({ message: 'Cannot find subscriber' })
+        }
         res.json(expense)
     } catch {
         res.redirect('/')
@@ -63,30 +67,41 @@ router.get('/:id', async (req, res) => {
 
 
 //Creating expense
-router.post('/', async (req, res) => {
-    const expenses = new Expense({
+router.post('/create', async (req, res) => {
+    const expense = new Expense({
         id: req.body.id,
         project_id: req.body.project,
         category_id: req.body.category,
         name: req.body.name,
         description: req.body.description,
         amount: req.body.amount,
-        created_at: new Date(req.body.created_at),
+        created_at: req.body.created_at,
         created_by: req.body.created_by,
-        updated_at: new Date(req.body.updated_at),
+        updated_at: req.body.updated_at,
         updated_by: req.body.updated_by
     })
 
     try {
-        const newExpense = await expenses.save()
+        const newExpense = await expense.save()
         res.status(201).json(newExpense)
     } catch (err) {
         res.status(400).json({ message: err.message })
     }
 })
 
-//updating one
-router.put('/expense/:id', async (req, res) => {
+//Deleting expense
+router.delete('/delete/:id', async (req, res) => {
+    expense = await Expense.findById(req.params.id)
+    try {
+      await Expense.findByIdAndRemove(req.params.id)
+      res.json({ message: 'Deleted expense' })
+    } catch (err) {
+      res.status(500).json({ message: err.message })
+    }
+  })
+
+//updating expense
+router.put('/update/:id', async (req, res) => {
     let expense
   
     try {
