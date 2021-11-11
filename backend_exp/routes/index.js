@@ -16,7 +16,7 @@ router.post('/users',async(req,res)=>{
         const hashedPassword=await bcrypt.hash(req.body.password,10)
 
         const user={name:req.body.name, password:hashedPassword}
-        User.push(user)
+        users.push(user)
         res.status(201).send()
     }catch{
         res.status(500).send()
@@ -24,7 +24,7 @@ router.post('/users',async(req,res)=>{
 })
 
 router.post('/users/login',async(req,res)=>{
-    const user = User.find(user=> user.name =req.body.name)
+    const user = users.find(user=> user.name =req.body.name)
     if (user == null){
         return res.status(400).send('Cannot find user')
     }
