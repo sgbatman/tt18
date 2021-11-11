@@ -1,16 +1,16 @@
 import React from "react";
 import { useState } from "react";
 
-const AddExpenses = (user_id, userName, project_id) => {
-  const [user_id, setUserId] = useState(user_id);
-  const [project_id, setProjectId] = useState(project_id);
+const AddExpenses = () => {
+//   const [user_id, setUserId] = useState(user_id);
+//   const [project_id, setProjectId] = useState(project_id);
   const [expenses, setExpenses] = useState("");
   const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState("");
   const [created_at, setCreatedAt] = useState(new Date().toLocaleString());
-  const [created_by, setCreatedBy] = useState(userName);
+  const [created_by, setCreatedBy] = useState('');
   const [updated_at, setUpdatedAt] = useState(new Date().toLocaleString());
-  const [updated_by, setUpdatedBy] = useState(userName);
+  const [updated_by, setUpdatedBy] = useState('');
 
   const onSubmit = () => {
     console.log("Submit press");
