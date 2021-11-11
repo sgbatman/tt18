@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-const projectSchema = new mongoose.Schema({
-    id: {
+const ExpensesSchema = new mongoose.Schema({
+    name: {
         type: String,
         required: true
     },
