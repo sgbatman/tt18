@@ -12,6 +12,14 @@ const AddExpenses = () => {
   const [updated_at, setUpdatedAt] = useState(new Date().toLocaleString());
   const [updated_by, setUpdatedBy] = useState('');
 
+  const fetchExpenses = async () => {
+    const res = await fetch('http://localhost:5000/expenses/1')
+
+    const data = await res.json()
+
+    return data
+  }
+
   const onSubmit = () => {
     console.log("Submit press");
     // Add function to submit
@@ -20,7 +28,7 @@ const AddExpenses = () => {
   // Add to backend
   // Need to update the link
   const addExpenses = async (expenese) => {
-    const res = await fetch("http://localhost:5000/tasks", {
+    const res = await fetch("http://localhost:5000/expenses", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -36,7 +44,7 @@ const AddExpenses = () => {
   };
   // Delete Task
   const deleteExpeneses = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+    const res = await fetch(`http://localhost:5000/expenses/${id}`, {
       method: "DELETE",
     });
   };
