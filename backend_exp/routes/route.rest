@@ -1,7 +1,22 @@
 GET http://localhost:3000/users
 
 ###
-GET http://localhost:3000/
+POST http://localhost:3000/users/
+Content-Type: application/json
+
+{
+    "name": "user101",
+    "password": "123456"
+}
+
+###
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "name": "user101",
+    "password": "123456"
+}
 
 ###
 
@@ -34,7 +49,7 @@ DELETE http://localhost:3000/subscribers/618a9836f3f7ac4f6b18b6a0
 ###
 
 //Creating expense
-POST http://localhost:3000/
+POST http://localhost:3000/projects
 Content-Type: : application/json
 
 {
