@@ -49,6 +49,19 @@ router.get('/user', async (req, res) => {
 
 })
 
+//Getting one project and its expenses
+router.get('/:id', async (req, res) => {
+    try {
+        const expense = await Expense.find({ project_id:req.params.project_id}).exec()
+        res.json(expense)
+    } catch {
+        res.redirect('/')
+    }
+})
+
+
+
+
 //Creating expense
 router.post('/', async (req, res) => {
     const expenses = new Expense({
