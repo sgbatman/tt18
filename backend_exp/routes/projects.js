@@ -1,5 +1,5 @@
 const express = require('express')
-const Project = require('../server')
+const Project = require('../models/subscriber')
 const router = express.Router()
 
 //Getting all projects
