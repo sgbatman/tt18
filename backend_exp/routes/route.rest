@@ -1,4 +1,4 @@
-GET http://localhost:3000/subscribers
+GET http://localhost:3000/users
 
 ###
 GET http://localhost:3000/
@@ -17,15 +17,35 @@ Content-Type: application/json
     "subscribedToChannel": "Web Dev Simplified"
 }
 
+
+
 ###
 
+POST http://localhost:3000/expense/1
+Content-Type: application/json
+{
+    "name": "Amazing Person",
+    "subscribedToChannel": "Web Dev Simplified"
+}
+
+###
 DELETE http://localhost:3000/subscribers/618a9836f3f7ac4f6b18b6a0
 
 ###
 
-PATCH http://localhost:3000/subscribers/618a98acf3f7ac4f6b18b6a2
-Content-Type: application/json
+//Creating expense
+POST http://localhost:3000/
+Content-Type: : application/json
 
 {
-    "name": "New Name"
+    "id": 3,
+    "project_id": 2,
+    "category_id": 2,
+    "name": "test",
+    "description": "testing",
+    "amount": 2,
+    "created_at": ,
+    "created_by": "Helen",
+    "updated_at": ,
+    "updated_by": "Helen"
 }
