@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
+import AddExpenses from "./components/AddExpenses";
 
 class App extends Component {
   handleSubmit = e => {
@@ -48,6 +49,7 @@ class App extends Component {
         <button className="secondary" onClick={this.handleClick}>
           Create an Account
         </button>
+        <AddExpenses />
       </div>
     );
   }
