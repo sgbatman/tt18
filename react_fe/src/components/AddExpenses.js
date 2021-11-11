@@ -14,6 +14,30 @@ const AddExpenses = () => {
       console.log('Submit press')
     }
 
+    // Add to backend
+    // Need to update the link
+    const addExpenses = async (expenese) => {
+        const res = await fetch('http://localhost:5000/tasks', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(expenses),
+        })
+        
+        // Get data after update
+        const data = await res.json()
+        
+        // Set data after retrieve
+        // setExpensesList([...expenses, data])
+    }
+    // Delete Task
+    const deleteExpeneses = async (id) => {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "DELETE",
+        });
+    };
+
     return (
             <form onSubmit={onSubmit}>
                 <div>
