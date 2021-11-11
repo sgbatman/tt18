@@ -12,6 +12,7 @@ const AddExpenses = () => {
 
     const onSubmit = () => {
       console.log('Submit press')
+      // Add function to submit
     }
 
     // Add to backend
@@ -45,6 +46,8 @@ const AddExpenses = () => {
                     <input
                         type='text'
                         placeholder='Expenses'
+                        value={expenses}
+                        onChange={(e) => setExpenses(e.target.value)}
                     />
                 </div>
 
@@ -53,6 +56,8 @@ const AddExpenses = () => {
                     <input
                         type='text'
                         placeholder='Description'
+                        value={desc}
+                        onChange={(e) => setDesc(e.target.value)}
                     />
                 </div>
 
@@ -61,6 +66,8 @@ const AddExpenses = () => {
                     <input
                         type='text'
                         placeholder='Amount'
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
                     />
                 </div>
 
