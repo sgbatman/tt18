@@ -7,45 +7,24 @@ mongoose.connect('mongodb+srv://admin:admin321@cluster0.aecxk.mongodb.net/expens
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
+app.use(express.json())
+const users =[]
+const bcrypt=require('bcrypt')
 
-app.use(express.json()) 
-const posts=[
-    {
-     username:'Kyle',
-     title:'Post 1'   
-    }
-
-    ,{
-        username:'Jim',
-        title:'Post 2'   
-       }
-]
-
-app.get('/posts',authenticateToken,(req,res)=> {
-    res.json(posts)
-
+app.get('/users',(req,res)=>{
+    res.json(users)
 })
 
-app.post('/login',(req,res)=>{
-// Authenticate User
+app.post('/users',async(req,res)=>{
+    try{
+        
+        const hashedPassword=await bcrypt.hash(req.body.password,10)
 
-    const username=req.body.username
-    const user= {name:username}
-    const accessToken = jwt.sign(user,process.env.ACESS_TOKEN_SECRET )
-    res.json({accessToken:accessToken})
-})
-
-
-function authenticateToken(req,res,next){
-    const authHeader=req.headers['authorization']
-    const token =authHeader && authHeader.split(' ')[1]
-    if (token==null)return res.sendStatus(401)
-    
-    jwt.verify(token,process.env.ACESS_TOKEN_SECRET,(err,user)=>{
-        if(err) return res.sendStatus(403)
-        req.user = user
-        next()
+        const user={name:req.body.name, password:hashedPassword}
+        users.push(user)
+        res.status(201).send()
+    }catch{
+        res.status(500).send()
     }
-    )
-}
+})
 app.listen(3000, () => console.log('Server Started'))
