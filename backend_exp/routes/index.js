@@ -1,15 +1,18 @@
-require('dotenv').config()
-const express = require('express')
-const jwt=require('jsonwebtoken')
-const app = express()
-const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://admin:admin321@cluster0.aecxk.mongodb.net/expenses?retryWrites=true&w=majority', {useNewUrlParser: true})
-const db = mongoose.connection
-db.on('error', (error) => console.error(error))
-db.once('open', () => console.log('Connected to Database'))
-app.use(express.json())
-const users =[]
-const bcrypt=require('bcrypt')
+// require('dotenv').config()
+// const express = require('express')
+// const jwt=require('jsonwebtoken')
+// const app = express()
+// const mongoose = require('mongoose')
+// mongoose.connect('mongodb+srv://admin:admin321@cluster0.aecxk.mongodb.net/expenses?retryWrites=true&w=majority', {useNewUrlParser: true})
+// const db = mongoose.connection
+// db.on('error', (error) => console.error(error))
+// db.once('open', () => console.log('Connected to Database'))
+// app.use(express.json())
+
+// const express = require('express')
+// const router = express.Router()
+// const bcrypt=require('bcrypt')
+// const users =[]
 
 app.get('/users',(req,res)=>{
     res.json(users)
@@ -44,3 +47,5 @@ app.post('/users/login',async(req,res)=>{
         res.status(500).send()
     }
 })
+
+module.exports = router

@@ -2,8 +2,9 @@ require('dotenv').config()
 const express = require('express')
 const jwt=require('jsonwebtoken')
 const app = express()
+
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://admin:admin321@cluster0.aecxk.mongodb.net/expenses?retryWrites=true&w=majority', {useNewUrlParser: true})
+mongoose.connect('mongodb://localhost/DBS')
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
@@ -28,21 +29,11 @@ app.post('/users',async(req,res)=>{
     }
 })
 
-app.post('/users/login',async(req,res)=>{
-    const user =users.find(user=> user.name =req.body.name)
-    if (user==null){
-        return res.status(400).send('Cannot find user')
-    }
-    try{
-       if(await bcrypt.compare(req.body.password,user.password)){
-           res.send('Success')
-       }else{
-           res.send('Not Allowed')
-       
-       }   
-    } catch{
-        res.status(500).send()
-    }
-})
+const indexRouter = require('./routes/index')
+const projectRouter = require('./routes/projects')
+
+app.use('/', indexRouter)
+app.use('/projects', projectRouter)
+
 
 app.listen(3000, () => console.log('Server Started'))

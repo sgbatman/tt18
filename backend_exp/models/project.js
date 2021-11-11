@@ -5,15 +5,20 @@ const ExpensesSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    subscribedToChannel: {
+    name: {
         type: String,
         required: true
     },
-    subscribeDate: {
-        type: Date,
+    budget: {
+        type: Number,
         required: true,
-        default: Date.now
+    },
+    description: {
+        type: Date,
+        required: true
     }
 })
 
-module.exports = mongoose.model('Subscriber', subscriberSchema)
+
+module.exports = mongoose.model('project', projectSchema)
+
