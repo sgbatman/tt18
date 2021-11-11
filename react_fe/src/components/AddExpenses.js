@@ -45,8 +45,8 @@ const AddExpenses = () => {
     <>
       <p>Add Expesnes for Project</p>
 
-      <form onSubmit={onSubmit}>
-        <div>
+      <form className="form" onSubmit={onSubmit}>
+        <div className="input-group">
           <label>Expenses:</label>
           <input
             type="text"
@@ -56,7 +56,7 @@ const AddExpenses = () => {
           />
         </div>
 
-        <div>
+        <div className="input-group">
           <label>Description:</label>
           <input
             type="text"
@@ -66,7 +66,7 @@ const AddExpenses = () => {
           />
         </div>
 
-        <div>
+        <div className="input-group">
           <label>Amount:</label>
           <input
             type="text"
@@ -76,7 +76,9 @@ const AddExpenses = () => {
           />
         </div>
 
-        <input type="submit" value="Add Expenses" />
+        <button className="secondary" type="submit">
+            Submit
+        </button>
       </form>
     </>
   );
