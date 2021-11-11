@@ -44,5 +44,3 @@ app.post('/users/login',async(req,res)=>{
         res.status(500).send()
     }
 })
-
-app.listen(3000, () => console.log('Server Started'))
