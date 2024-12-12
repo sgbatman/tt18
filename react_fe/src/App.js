@@ -8,7 +8,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
         <Login displaytext="Login Screen"/>
         <AddExpenses />
       </div>
